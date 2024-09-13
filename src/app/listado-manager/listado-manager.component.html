@@ -1,0 +1,26 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Creacion</th>
+        <th>Dueños</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td>{{ item.name }}</td>
+        <td>{{ isFolder(item.type) ? 'Folder' : 'File' }}</td>
+        <td>{{ item.creation | date }}</td>
+        <td>
+          <div class="d-flex flex-wrap">
+            <div *ngFor="let owner of item.owners" class="d-flex align-items-center me-2 mb-2">
+              <img [src]="owner.avatarUrl" alt="Owner avatar" width="30" class="rounded-circle me-2">
+              <span>{{ owner.name }}</span>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
